@@ -21,9 +21,9 @@ unit_tests:
     - mysql:5.7
   variables:
     DB_HOST: mysql
-    DB_DATABASE: test_db
+    DB_DATABASE: emirates
     DB_USERNAME: root
-    DB_PASSWORD: root
+    DB_PASSWORD: 
   before_script:
     - apt-get update && apt-get install -y unzip zip git curl libzip-dev libpng-dev libonig-dev libxml2-dev
     - docker-php-ext-install pdo pdo_mysql zip
@@ -31,6 +31,7 @@ unit_tests:
     - php composer.phar install
     - cp .env.testing .env
     - php artisan key:generate
+    - until mysqladmin ping -h"$DB_HOST" --silent; do echo "Waiting for MySQL..."; sleep 2; done
     - php artisan migrate --env=testing --force
   script:
     - ./vendor/bin/phpunit
