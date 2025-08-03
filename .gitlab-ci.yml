@@ -1,0 +1,56 @@
+stages:
+  - test
+  - lint
+  - build
+
+variables:
+  DOCKER_DRIVER: overlay2
+  APP_NAME: emirates
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+# Caches dependencies to speed up builds
+cache:
+  paths:
+    - vendor/
+    - node_modules/
+
+unit_tests:
+  stage: test
+  image: php:8.2
+  services:
+    - mysql:5.7
+  variables:
+    DB_HOST: mysql
+    DB_DATABASE: test_db
+    DB_USERNAME: root
+    DB_PASSWORD: root
+  before_script:
+    - apt-get update && apt-get install -y unzip zip git curl libzip-dev libpng-dev libonig-dev libxml2-dev
+    - docker-php-ext-install pdo pdo_mysql zip
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+    - cp .env.testing .env
+    - php artisan key:generate
+    - php artisan migrate --env=testing --force
+  script:
+    - ./vendor/bin/phpunit
+
+code_lint:
+  stage: lint
+  image: php:8.2
+  before_script:
+    - apt-get update && apt-get install -y git unzip curl
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+  script:
+    - ./vendor/bin/php-cs-fixer fix --dry-run --diff
+
+docker_build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build -t $IMAGE_TAG .
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $IMAGE_TAG
