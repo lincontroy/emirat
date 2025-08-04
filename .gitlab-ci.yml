@@ -54,7 +54,7 @@ code_lint:
     - curl -sS https://getcomposer.org/installer | php
     - php composer.phar install
   script:
-    - ./vendor/bin/php-cs-fixer fix --dry-run --diff
+    - ./vendor/bin/php-cs-fixer fix --diff
 
 docker_build:
   stage: build
