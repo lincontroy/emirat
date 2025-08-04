@@ -31,8 +31,18 @@ unit_tests:
     - php composer.phar install
     - cp .env.testing .env
     - php artisan key:generate
-    - until mysqladmin ping -h"$DB_HOST" --silent; do echo "Waiting for MySQL..."; sleep 2; done
-    - php artisan migrate --env=testing --force
+
+    # ✅ Replaces mysqladmin with Laravel's own DB check loop
+    - |
+      for i in {1..10}; do
+        if php artisan migrate --env=testing --force; then
+          echo "Migration succeeded";
+          break;
+        else
+          echo "Waiting for DB to be ready...";
+          sleep 5;
+        fi
+      done
   script:
     - ./vendor/bin/phpunit
 
