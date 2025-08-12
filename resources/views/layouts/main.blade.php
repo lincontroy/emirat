@@ -270,7 +270,7 @@
           <i class="bi bi-shield-check text-warning fs-4"></i>
           <div>
             <div class="brand-mark fs-5">Emirates</div>
-            <div class="small opacity-75">Special Fund</div>
+            
           </div>
         </a>
       </div>
