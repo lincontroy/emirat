@@ -45,4 +45,39 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function lockedPlans()
+    {
+        return $this->hasMany(UserLockedPlan::class);
+    }
+
+    /**
+     * Get only active locked plans
+     */
+    public function activeLockedPlans()
+    {
+        return $this->lockedPlans()->where('status', 'active');
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    // app/Models/User.php
+
+public function getAvailableBalanceAttribute()
+{
+    return $this->balance_usd - $this->lockedPlans()->sum('amount');
+}
+
+public function getLockedBalanceAttribute()
+{
+    return $this->lockedPlans()->sum('amount');
+}
+
+public function getActivePlansCountAttribute()
+{
+    return $this->lockedPlans()->where('status', 'active')->count();
+}
 }
