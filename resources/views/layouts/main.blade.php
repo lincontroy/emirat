@@ -374,16 +374,16 @@
     </div>
     <div class="offcanvas-body p-0">
       <nav class="nav flex-column p-2" role="navigation" aria-label="Mobile Navigation">
-        <a class="nav-link px-3 py-2 active" href="#dashboard"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
-        <a class="nav-link px-3 py-2" href="#plans"><i class="bi bi-lock-fill me-2"></i>Plans / Lock-in</a>
-        <a class="nav-link px-3 py-2" href="#deposit"><i class="bi bi-arrow-down-circle me-2"></i>Deposit</a>
-        <a class="nav-link px-3 py-2" href="#withdraw"><i class="bi bi-arrow-up-circle me-2"></i>Withdraw</a>
-        <a class="nav-link px-3 py-2" href="#transactions"><i class="bi bi-table me-2"></i>Transactions</a>
-        <a class="nav-link px-3 py-2" href="#investments"><i class="bi bi-pie-chart-fill me-2"></i>Investments</a>
-        <a class="nav-link px-3 py-2" href="#kyc"><i class="bi bi-person-badge me-2"></i>KYC / Profile</a>
-        <a class="nav-link px-3 py-2" href="#settings"><i class="bi bi-gear me-2"></i>Settings</a>
-        <a class="nav-link px-3 py-2" href="#support"><i class="bi bi-life-preserver me-2"></i>Support</a>
-        <a class="nav-link px-3 py-2" href="#notifications"><i class="bi bi-bell-fill me-2"></i>Notifications</a>
+        <a class="nav-link px-3 py-2 active" href="/dashboard"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+        <a class="nav-link px-3 py-2" href="/plans"><i class="bi bi-lock-fill me-2"></i>Plans / Lock-in</a>
+        <a class="nav-link px-3 py-2" href="/deposit"><i class="bi bi-arrow-down-circle me-2"></i>Deposit</a>
+        <a class="nav-link px-3 py-2" href="/withdraw"><i class="bi bi-arrow-up-circle me-2"></i>Withdraw</a>
+        <a class="nav-link px-3 py-2" href="/transactions"><i class="bi bi-table me-2"></i>Transactions</a>
+        <a class="nav-link px-3 py-2" href="/plans"><i class="bi bi-pie-chart-fill me-2"></i>Investments</a>
+        <a class="nav-link px-3 py-2" href="/kyc"><i class="bi bi-person-badge me-2"></i>KYC / Profile</a>
+        <a class="nav-link px-3 py-2" href="/settings"><i class="bi bi-gear me-2"></i>Settings</a>
+        <a class="nav-link px-3 py-2" href="/support"><i class="bi bi-life-preserver me-2"></i>Support</a>
+        <a class="nav-link px-3 py-2" href="/notifications"><i class="bi bi-bell-fill me-2"></i>Notifications</a>
 
         <hr>
 
