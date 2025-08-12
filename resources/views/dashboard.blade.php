@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-<section id="dashboard" class="container-xxl">
+<section id="dashboard" class="ccontainer-xxl pt-5">
       <div class="d-flex align-items-center justify-content-between mb-3">
         <div>
           <h2 class="section-title mb-0">Overview</h2>

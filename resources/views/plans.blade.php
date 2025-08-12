@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<section id="deposit" class="container-xxl pt-5">
 <div class="d-flex align-items-center justify-content-between mb-4">
     <div>
         <h2 class="section-title mb-1">Plans / Lock-in</h2>
@@ -101,6 +102,7 @@
         </table>
     </div>
 </div>
+</section>
 @endif
 
 <!-- Lock Modal -->
