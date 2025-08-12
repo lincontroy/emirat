@@ -337,7 +337,7 @@
           <a class="navbar-brand d-flex align-items-center gap-2 text-white d-lg-none" href="#dashboard">
             <i class="bi bi-shield-check text-warning"></i>
             <span class="brand-mark">Emirates</span>
-            <span class="small opacity-75">Special Fund</span>
+            
           </a>
           
           <div class="ms-auto d-flex align-items-center gap-3">
