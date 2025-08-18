@@ -1,64 +1,210 @@
+@extends('layouts.main')
 
+@section('content')
 
-  @extends('layouts.main')
+<!-- SUPPORT / HELP CENTER -->
+<section id="support" class="container-xxl py-5">
+  <div class="text-center mb-5">
+    <h1 class="display-5 fw-bold mb-3">Emirate Funds Support</h1>
+    <p class="lead text-muted">We're here to help you 24/7</p>
+  </div>
 
-    <!-- SUPPORT / HELP -->
-    <section id="support" class="container-xxl pt-5">
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <div>
-          <h2 class="section-title mb-0">Support / Help</h2>
-          <p class="section-sub mb-0">Reach out or browse FAQs</p>
+  <div class="row g-4">
+    <!-- Contact Card -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-primary text-white">
+          <h2 class="h5 mb-0"><i class="fas fa-headset me-2"></i>Contact Support</h2>
+        </div>
+        <div class="card-body">
+          <div class="mb-4">
+            <h3 class="h6 text-primary">Main Contacts</h3>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-envelope text-primary me-2"></i>
+                <strong>Email:</strong> support@emiratefunds.ae
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-phone-alt text-primary me-2"></i>
+                <strong>Phone:</strong> +971 4 123 4567
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                <strong>Address:</strong> Dubai International Financial Centre, UAE
+              </li>
+            </ul>
+          </div>
+
+          <div class="mb-4">
+            <h3 class="h6 text-primary">Department Contacts</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded mb-3">
+                  <h4 class="h6"><i class="fas fa-coins me-2"></i>Investments</h4>
+                  <p class="mb-1 small">invest@emiratefunds.ae</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded mb-3">
+                  <h4 class="h6"><i class="fas fa-file-signature me-2"></i>KYC</h4>
+                  <p class="mb-1 small">compliance@emiratefunds.ae</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded">
+                  <h4 class="h6"><i class="fas fa-money-bill-wave me-2"></i>Withdrawals</h4>
+                  <p class="mb-1 small">finance@emiratefunds.ae</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded">
+                  <h4 class="h6"><i class="fas fa-shield-alt me-2"></i>Security</h4>
+                  <p class="mb-1 small">security@emiratefunds.ae</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+       
         </div>
       </div>
-      <div class="row g-3">
-        <div class="col-12 col-lg-6">
-          <article class="card h-100">
-            <div class="card-header bg-transparent fw-semibold">Contact Us</div>
-            <div class="card-body">
-              <form id="supportForm" data-endpoint="/api/support" novalidate>
-                <div class="mb-3">
-                  <label for="supEmail" class="form-label">Email</label>
-                  <input id="supEmail" name="email" type="email" class="form-control" placeholder="you@example.com" required>
-                </div>
-                <div class="mb-3">
-                  <label for="supMsg" class="form-label">Message</label>
-                  <textarea id="supMsg" name="message" rows="4" class="form-control" placeholder="How can we help?" required></textarea>
-                </div>
-                <button class="btn btn-primary" type="submit">Send</button>
-              </form>
-            </div>
-          </article>
+    </div>
+
+    <!-- FAQ Card -->
+    <div class="col-lg-6">
+      <div class="card border-0 shadow-sm h-100">
+        <div class="card-header bg-primary text-white">
+          <h2 class="h5 mb-0"><i class="fas fa-question-circle me-2"></i>Frequently Asked Questions</h2>
         </div>
-        <div class="col-12 col-lg-6">
-          <article class="card h-100">
-            <div class="card-header bg-transparent fw-semibold">FAQs</div>
-            <div class="card-body">
-              <div class="accordion" id="faqAcc" role="region" aria-label="FAQ List">
-                <div class="accordion-item">
-                  <h3 class="accordion-header" id="faqOneH">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
-                      How long do withdrawals take?
-                    </button>
-                  </h3>
-                  <div id="faqOne" class="accordion-collapse collapse show" aria-labelledby="faqOneH" data-bs-parent="#faqAcc">
-                    <div class="accordion-body">Withdrawals are processed within 1-2 business days. Locked funds may delay processing or incur penalties depending on plan rules.</div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h3 class="accordion-header" id="faqTwoH">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
-                      Do I need to complete KYC?
-                    </button>
-                  </h3>
-                  <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqTwoH" data-bs-parent="#faqAcc">
-                    <div class="accordion-body">Yes, KYC is required to deposit, withdraw, and access higher limits. Upload your ID and proof of address in the KYC section.</div>
+        <div class="card-body">
+          <div class="accordion" id="faqAccordion">
+            <!-- Account Questions -->
+            <div class="accordion-item border-0 mb-3">
+              <h3 class="accordion-header" id="headingAccount">
+                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAccount" aria-expanded="false" aria-controls="collapseAccount">
+                  <i class="fas fa-user-circle me-2 text-primary"></i> Account Questions
+                </button>
+              </h3>
+              <div id="collapseAccount" class="accordion-collapse collapse" aria-labelledby="headingAccount" data-bs-parent="#faqAccordion">
+                <div class="accordion-body pt-0">
+                  <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq1">How do I create an account?</a>
+                    <div id="faq1" class="collapse ps-3 small py-2">Register with your email, complete your profile, and verify your identity through our KYC process.</div>
+                    
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq2">Is my personal information secure?</a>
+                    <div id="faq2" class="collapse ps-3 small py-2">We use bank-level encryption and comply with UAE data protection regulations.</div>
                   </div>
                 </div>
               </div>
             </div>
-          </article>
+
+            <!-- Investment Questions -->
+            <div class="accordion-item border-0 mb-3">
+              <h3 class="accordion-header" id="headingInvest">
+                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInvest" aria-expanded="false" aria-controls="collapseInvest">
+                  <i class="fas fa-chart-line me-2 text-primary"></i> Investment Questions
+                </button>
+              </h3>
+              <div id="collapseInvest" class="accordion-collapse collapse" aria-labelledby="headingInvest" data-bs-parent="#faqAccordion">
+                <div class="accordion-body pt-0">
+                  <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq3">What are the minimum investment amounts?</a>
+                    <div id="faq3" class="collapse ps-3 small py-2">Our starter plans begin at AED 1,000 with higher tiers available.</div>
+                    
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq4">How are returns calculated?</a>
+                    <div id="faq4" class="collapse ps-3 small py-2">Returns are based on our Sharia-compliant investment models and market performance.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Withdrawal Questions -->
+            <div class="accordion-item border-0 mb-3">
+              <h3 class="accordion-header" id="headingWithdraw">
+                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWithdraw" aria-expanded="false" aria-controls="collapseWithdraw">
+                  <i class="fas fa-money-bill-wave me-2 text-primary"></i> Withdrawal Questions
+                </button>
+              </h3>
+              <div id="collapseWithdraw" class="accordion-collapse collapse" aria-labelledby="headingWithdraw" data-bs-parent="#faqAccordion">
+                <div class="accordion-body pt-0">
+                  <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq5">How long do withdrawals take?</a>
+                    <div id="faq5" class="collapse ps-3 small py-2">Standard processing is 1-2 business days. VIP members receive priority processing.</div>
+                    
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq6">Are there withdrawal fees?</a>
+                    <div id="faq6" class="collapse ps-3 small py-2">No fees for standard withdrawals. Express withdrawals (same-day) incur a 1% charge.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- KYC Questions -->
+            <div class="accordion-item border-0">
+              <h3 class="accordion-header" id="headingKYC">
+                <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKYC" aria-expanded="false" aria-controls="collapseKYC">
+                  <i class="fas fa-id-card me-2 text-primary"></i> KYC Questions
+                </button>
+              </h3>
+              <div id="collapseKYC" class="accordion-collapse collapse" aria-labelledby="headingKYC" data-bs-parent="#faqAccordion">
+                <div class="accordion-body pt-0">
+                  <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq7">What documents are required?</a>
+                    <div id="faq7" class="collapse ps-3 small py-2">Valid passport/Emirates ID, proof of address, and sometimes source of funds documentation.</div>
+                    
+                    <a href="#" class="list-group-item list-group-item-action border-0" data-bs-toggle="collapse" data-bs-target="#faq8">How long does verification take?</a>
+                    <div id="faq8" class="collapse ps-3 small py-2">Typically 24-48 hours after document submission.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Still Need Help? -->
+          <div class="alert alert-light mt-4">
+            <h4 class="h6 mb-3"><i class="fas fa-life-ring me-2 text-primary"></i> Still need help?</h4>
+            <p class="mb-2">Visit our <a href="/knowledge-base" class="text-primary">Knowledge Base</a> or <a href="/live-chat" class="text-primary">start a live chat</a>.</p>
+            <p class="mb-0">Operating hours: 24/7 support</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    @endsection
+@endsection
+
+@push('styles')
+<style>
+  .accordion-button:not(.collapsed) {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.1);
+  }
+  .accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+  }
+  .list-group-item-action:hover {
+    color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+  }
+</style>
+@endpush
+
+@push('scripts')
+<script>
+  // Form validation
+  (function() {
+    'use strict'
+    const form = document.getElementById('supportForm')
+    
+    form.addEventListener('submit', function(event) {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      
+      form.classList.add('was-validated')
+    }, false)
+  })()
+</script>
+@endpush

@@ -31,7 +31,12 @@
                 <span class="badge text-bg-success">Liquid</span>
             </div>
             <div class="metric" id="availableBalance" data-available="{{ auth()->user()->available_balance }}">
-                ${{ number_format(auth()->user()->available_balance, 2) }}
+            @php
+    $balance = auth()->user()->available_balance;
+    $displayValue = $balance == 0 ? '0' : number_format(abs($balance), $balance == 0 ? 0 : 2);
+@endphp
+
+${{ $displayValue }}
             </div>
             <div class="metric-sub">Ready to withdraw</div>
         </div>

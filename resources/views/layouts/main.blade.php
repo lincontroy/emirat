@@ -305,17 +305,13 @@
           <a class="nav-link" href="/kyc">
             <i class="bi bi-person-badge"></i>KYC / Profile
           </a>
-          <a class="nav-link" href="/settings">
-            <i class="bi bi-gear"></i>Settings
-          </a>
+        
 
           <div class="sidebar-section">Support</div>
           <a class="nav-link" href="/support">
             <i class="bi bi-life-preserver"></i>Support
           </a>
-          <a class="nav-link" href="/notifications">
-            <i class="bi bi-bell-fill"></i>Notifications
-          </a>
+          
         </div>
 
         <div class="sidebar-logout">

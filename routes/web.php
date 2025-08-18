@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::post('/kyc/submit', [ProfileController::class, 'submitKYC'])->name('kyc.submit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/support', [ProfileController::class, 'support'])->name('profile.support');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::view('/dashboard', 'dashboard')->name('dashboard');
@@ -82,8 +83,13 @@ Route::post('/wallet', [AdminController::class, 'storeWallet'])->name('wallet.st
 Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
 // Admin Wallet Routes
 Route::get('/investments', [AdminController::class, 'activeInvestments'])->name('investments');
-});
+Route::get('/users/kyc', [AdminController::class, 'index'])->name('users.kyc');
+    Route::post('/kyc/{user}/approve', [AdminController::class, 'approve'])->name('kyc.approve');
+    Route::post('/kyc/{user}/reject', [AdminController::class, 'reject'])->name('kyc.reject');
 Route::post('/admin/wallets', [AdminController::class, 'storeWallet'])->name('admin.wallets.store');
 Route::post('/admin/wallets/{id}/toggle', [AdminController::class, 'toggleWalletStatus'])->name('admin.wallets.toggle');
+
+});
+
 
 require __DIR__.'/auth.php';

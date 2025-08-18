@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\NewKYCSubmissionNotification;
+use Mail;
 
 class ProfileController extends Controller
 {
     /**
      * Display the user's profile form.
      */
+
+     public function support(){
+        return view('support');
+     }
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -48,32 +54,35 @@ class ProfileController extends Controller
             'id_back' => 'required|file|mimes:jpeg,png,jpg|max:2048',
             'selfie' => 'required|file|mimes:jpeg,png,jpg|max:2048',
         ]);
-
+    
         $user = $request->user();
-
-        // Store ID front
-        if ($request->hasFile('id_front')) {
-            $idFrontPath = $request->file('id_front')->store('kyc_documents/' . $user->id, 'public');
-            $user->id_front_path = $idFrontPath;
+    
+        // Store files
+        $user->update([
+            'id_front_path' => $request->file('id_front')->store('kyc_documents/'.$user->id, 'public'),
+            'id_back_path' => $request->file('id_back')->store('kyc_documents/'.$user->id, 'public'),
+            'selfie_path' => $request->file('selfie')->store('kyc_documents/'.$user->id, 'public'),
+            'kyc_status' => 'pending',
+            'kyc_submitted_at' => now(),
+        ]);
+    
+        // Send notification to admin
+        $adminEmails = [
+            'lincolnmunene37@gmail.com'       
+        ];
+    
+        // Filter out any empty values just in case
+        $adminEmails = array_filter($adminEmails);
+    
+        if (!empty($adminEmails)) {
+            Mail::to(config('mail.from.address')) // Main recipient
+                ->bcc($adminEmails) // Blind copy to all admins
+                ->send(new NewKYCSubmissionNotification($user));
         }
-
-        // Store ID back
-        if ($request->hasFile('id_back')) {
-            $idBackPath = $request->file('id_back')->store('kyc_documents/' . $user->id, 'public');
-            $user->id_back_path = $idBackPath;
-        }
-
-        // Store selfie
-        if ($request->hasFile('selfie')) {
-            $selfiePath = $request->file('selfie')->store('kyc_documents/' . $user->id, 'public');
-            $user->selfie_path = $selfiePath;
-        }
-
-        $user->kyc_status = 'pending'; // Set KYC status to pending
-        $user->save();
-
+    
         return Redirect::route('kyc')->with('status', 'kyc-submitted');
     }
+    
 
     /**
      * Delete the user's account.

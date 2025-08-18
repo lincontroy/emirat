@@ -15,6 +15,10 @@ use App\Http\Controllers\Controller;
 use App\Models\WalletSetting;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Mail\KYCApprovedNotification;
+use App\Mail\KYCRejectedNotification;
+use Illuminate\Support\Facades\Mail;
+
 class AdminController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
@@ -22,6 +26,79 @@ class AdminController extends Controller
     {
        // $this->middleware(['auth', 'verified']);
        // $this->middleware('role:admin');
+    }
+
+    public function index(Request $request)
+    {
+        $query = User::whereNotNull('id_front_path')
+                    ->orderBy('kyc_submitted_at', 'desc');
+        
+        if ($request->filled('status')) {
+            $query->where('kyc_status', $request->status);
+        }
+        
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%$search%")
+                  ->orWhere('email', 'like', "%$search%");
+            });
+        }
+        
+        if ($request->filled('user_id')) {
+            $query->where('id', $request->user_id);
+        }
+        
+        $users = $query->paginate(15);
+        
+        return view('admin.users.kyc', compact('users'));
+    }
+    
+    public function approve($userId)
+    {
+
+        // dd($userId);
+        $user = User::findOrFail($userId);
+
+        // dd($user);
+        try{
+
+            $user->kyc_status = 'approved'; 
+            $user->kyc_verified_at = now();
+            // Exact case match from ENUM definition
+            $user->save(); // More reliable for ENUM updates
+           
+        }catch(Exception $e){
+            dd($e->getMessage);
+        }
+        
+        // Mail::to($user->email)->send(new KYCApprovedNotification($user));
+        // dd($user->fresh());
+    
+    return back()->with('success', 'KYC approved successfully');
+       
+       
+        // Send approval notification
+        
+    }
+    
+    public function reject(Request $request, $userId)
+    {
+        $request->validate([
+            'rejection_reason' => 'required|string|max:500',
+        ]);
+        
+        $user = User::findOrFail($userId);
+        
+        $user->update([
+            'kyc_status' => 'rejected',
+            'kyc_rejection_reason' => $request->rejection_reason,
+        ]);
+        
+        // Send rejection notification
+        Mail::to($user->email)->send(new KYCRejectedNotification($user, $request->rejection_reason));
+        
+        return back()->with('success', 'KYC rejected successfully');
     }
 
     public function dashboard()

@@ -59,39 +59,39 @@
 <div class="mt-5">
     <h4 class="mb-3">Your Active Plans</h4>
     <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Plan</th>
-                    <th>Amount</th>
-                    <th>Expected Yield</th>
-                    <th>Start Date</th>
-                    <th>Maturity Date</th>
-                    <th>Status</th>
-                
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($lockedPlans as $lockedPlan)
-                <tr>
-                    <td>{{ $lockedPlan->plan->name }}</td>
-                    <td>${{ number_format($lockedPlan->amount, 2) }}</td>
-                    <td>${{ number_format($lockedPlan->expected_yield, 2) }}</td>
-                    <td>{{ $lockedPlan->start_date->format('M d, Y') }}</td>
-                    <td>{{ $lockedPlan->end_date->format('M d, Y') }}</td>
-                    <td>
-                        <span class="badge 
-                            @if($lockedPlan->status == 'active') bg-success
-                            @elseif($lockedPlan->status == 'completed') bg-primary
-                            @else bg-warning @endif">
-                            {{ ucfirst(str_replace('_', ' ', $lockedPlan->status)) }}
-                        </span>
-                    </td>
-                    
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Plan</th>
+            <th>Amount</th>
+            <th>Expected Yield</th>
+            <th>Total Returns</th>
+            <th>Start Date</th>
+            <th>Maturity Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($lockedPlans as $lockedPlan)
+        <tr>
+            <td>{{ $lockedPlan->plan->name }}</td>
+            <td>${{ number_format($lockedPlan->amount, 2) }}</td>
+            <td>${{ number_format($lockedPlan->expected_yield, 2) }}</td>
+            <td>${{ number_format($lockedPlan->amount + $lockedPlan->expected_yield, 2) }}</td>
+            <td>{{ $lockedPlan->start_date->format('M d, Y') }}</td>
+            <td>{{ $lockedPlan->end_date->format('M d, Y') }}</td>
+            <td>
+                <span class="badge 
+                    @if($lockedPlan->status == 'active') bg-success
+                    @elseif($lockedPlan->status == 'completed') bg-primary
+                    @else bg-warning @endif">
+                    {{ ucfirst(str_replace('_', ' ', $lockedPlan->status)) }}
+                </span>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
     </div>
 </div>
 @endif
@@ -128,6 +128,10 @@
                         <div>Expected yield: <strong id="expectedYield">$0.00</strong></div>
                         <div class="text-muted small">Total return: <strong id="totalReturn">$0.00</strong></div>
                     </div>
+                    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button type="submit" class="btn btn-primary">Confirm Lock</button>
+</div>
                 </div>
                
             </form>
