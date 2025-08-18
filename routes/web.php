@@ -78,7 +78,7 @@ Route::get('/admin/transactions', [AdminController::class, 'transactions'])->nam
 
 // Admin Wallet Routes
 Route::get('/settings/wallets', [AdminController::class, 'walletSettings'])->name('wallet.settings');
-Route::post('/wallet', [AdminController::class, 'storeWallet'])->name('wallet.store');
+Route::post('/wallet', [AdminController::class, 'storeWallet'])->name('wallets.store');
 // Reports
 Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
 // Admin Wallet Routes
@@ -87,7 +87,7 @@ Route::get('/users/kyc', [AdminController::class, 'index'])->name('users.kyc');
     Route::post('/kyc/{user}/approve', [AdminController::class, 'approve'])->name('kyc.approve');
     Route::post('/kyc/{user}/reject', [AdminController::class, 'reject'])->name('kyc.reject');
 Route::post('/admin/wallets', [AdminController::class, 'storeWallet'])->name('admin.wallets.store');
-Route::post('/admin/wallets/{id}/toggle', [AdminController::class, 'toggleWalletStatus'])->name('admin.wallets.toggle');
+Route::post('/wallets/{id}/toggle', [AdminController::class, 'toggleWalletStatus'])->name('wallets.toggle');
 
 });
 
