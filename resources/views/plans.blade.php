@@ -68,7 +68,7 @@
                     <th>Start Date</th>
                     <th>Maturity Date</th>
                     <th>Status</th>
-                    <th>Actions</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -87,16 +87,7 @@
                             {{ ucfirst(str_replace('_', ' ', $lockedPlan->status)) }}
                         </span>
                     </td>
-                    <td>
-                        @if($lockedPlan->status == 'active')
-                        <form action="{{ route('plans.unlock', $lockedPlan) }}" method="POST" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-outline-danger">
-                                Unlock Early
-                            </button>
-                        </form>
-                        @endif
-                    </td>
+                    
                 </tr>
                 @endforeach
             </tbody>
@@ -138,10 +129,7 @@
                         <div class="text-muted small">Total return: <strong id="totalReturn">$0.00</strong></div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Confirm Lock</button>
-                </div>
+               
             </form>
         </div>
     </div>
