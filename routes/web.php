@@ -5,6 +5,7 @@ use App\Http\Controllers\DepositController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvestmentPlanController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WithdrawalController;
 
 Route::get('/', function () {
@@ -16,6 +17,7 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::post('/kyc/submit', [ProfileController::class, 'submitKYC'])->name('kyc.submit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -40,6 +42,46 @@ Route::middleware('auth')->group(function () {
     ->middleware('auth')
     ->name('logout');
 
+});
+// Admin Routes
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    
+    // Users Management
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+    Route::put('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+    
+    // Deposits Management
+    Route::get('/deposits', [AdminController::class, 'deposits'])->name('deposits');
+    Route::patch('/deposits/{deposit}', [AdminController::class, 'updateDepositStatus'])->name('deposits.update');
+    
+    // Withdrawals Management
+    Route::get('/withdrawals', [AdminController::class, 'withdrawals'])->name('withdrawals');
+    Route::patch('/withdrawals/{withdrawal}', [AdminController::class, 'updateWithdrawalStatus'])->name('withdrawals.update');
+    
+    // Investment Plans Management
+    Route::get('/plans', [AdminController::class, 'investmentPlans'])->name('plans');
+    Route::get('/plans/create', [AdminController::class, 'createPlan'])->name('plans.create');
+    Route::post('/plans', [AdminController::class, 'storePlan'])->name('plans.store');
+    Route::get('/plans/{plan}/edit', [AdminController::class, 'editPlan'])->name('plans.edit');
+    Route::put('/plans/{plan}', [AdminController::class, 'updatePlan'])->name('plans.update');
+    
+    // Active Investments
+    // User Management
+Route::get('/admin/users/create', [AdminController::class, 'createUser'])->name('admin.users.create');
+Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
+
+// Transactions
+Route::get('/admin/transactions', [AdminController::class, 'transactions'])->name('admin.transactions');
+
+// Reports
+Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
+
+// Settings
+Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
+Route::post('/admin/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
+    Route::get('/investments', [AdminController::class, 'activeInvestments'])->name('investments');
 });
 
 require __DIR__.'/auth.php';
