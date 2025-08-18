@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposit;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Models\DepositWallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -16,14 +17,22 @@ class DepositController extends Controller
     }
     public function create()
     {
-        // Generate a unique wallet address for the user
-        $walletAddress = 'USDT-' . Str::upper(Str::random(8)) . '-' . Auth::id();
+        // Get active wallet or generate a new one if none exists
+        $wallet = DepositWallet::active()->first();
         
+        if (!$wallet) {
+            $walletAddress = 'USDT-' . Str::upper(Str::random(8)) . '-' . Auth::id();
+            $wallet = DepositWallet::create([
+                'wallet_address' => $walletAddress,
+                'network' => 'TRC20',
+                'is_active' => true
+            ]);
+        }
+    
         return view('deposit', [
-            'walletAddress' => $walletAddress
+            'walletAddress' => $wallet->wallet_address
         ]);
     }
-
     public function store(Request $request)
     {
         $validated = $request->validate([

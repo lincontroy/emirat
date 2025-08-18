@@ -75,13 +75,15 @@ Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.
 // Transactions
 Route::get('/admin/transactions', [AdminController::class, 'transactions'])->name('admin.transactions');
 
+// Admin Wallet Routes
+Route::get('/settings/wallets', [AdminController::class, 'walletSettings'])->name('wallet.settings');
+Route::post('/wallet', [AdminController::class, 'storeWallet'])->name('wallet.store');
 // Reports
 Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
-
-// Settings
-Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin.settings');
-Route::post('/admin/settings', [AdminController::class, 'updateSettings'])->name('admin.settings.update');
-    Route::get('/investments', [AdminController::class, 'activeInvestments'])->name('investments');
+// Admin Wallet Routes
+Route::get('/investments', [AdminController::class, 'activeInvestments'])->name('investments');
 });
+Route::post('/admin/wallets', [AdminController::class, 'storeWallet'])->name('admin.wallets.store');
+Route::post('/admin/wallets/{id}/toggle', [AdminController::class, 'toggleWalletStatus'])->name('admin.wallets.toggle');
 
 require __DIR__.'/auth.php';

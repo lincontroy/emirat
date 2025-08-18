@@ -371,6 +371,14 @@ return [
         'text' => 'Settings',
         'url'  => '/admin/settings',
         'icon' => 'fas fa-cog',
+        'submenu' => [
+            [
+                'text' => 'Wallet Addresses',
+                'url'  => '/admin/settings/wallets',
+                'icon' => 'fas fa-wallet',
+            ],
+            // ... other settings items ...
+        ],
     ],
 ],
 

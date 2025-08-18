@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaction;
+use App\Models\Withdrawal;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -44,15 +45,28 @@ class WithdrawalController extends Controller
             $user->decrement('balance_usd', $amount);
             
             // Create withdrawal transaction
-            $transaction = Transaction::create([
-                'user_id' => $user->id,
-                'type' => 'withdrawal',
-                'amount' => $amount,
-                'status' => 'pending',
-                'method' => $validated['destination'],
-                'details' => $this->getWithdrawalDetails($validated),
-                'reference' => 'WD-' . strtoupper(uniqid()),
-            ]);
+            // Create the withdrawal record
+$withdrawal = Withdrawal::create([
+    'user_id' => $user->id,
+    'amount' => $amount,
+    'status' => 'pending',
+    'method' => $validated['destination'],
+    'reference' => 'WD-' . strtoupper(uniqid()),
+    'details' => $this->getWithdrawalDetails($validated)
+]);
+
+// Create the associated transaction
+$transaction = $withdrawal->transaction()->create([
+    'user_id' => $user->id,
+    'type' => 'withdrawal',
+    'amount' => $amount,
+    'status' => 'pending',
+    'meta' => [
+        'method' => $validated['destination'],
+        'reference' => $withdrawal->reference,
+        'details' => $withdrawal->details
+    ]
+]);
             
             // Process the withdrawal based on method
             $processed = $this->processWithdrawalByMethod($transaction);

@@ -8,9 +8,11 @@ use App\Models\Transaction;
 use App\Models\Withdrawal;
 use App\Models\InvestmentPlan;
 use App\Models\UserLockedPlan;
+use App\Models\DepositWallet;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Models\WalletSetting;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 class AdminController extends Controller
@@ -190,11 +192,7 @@ public function reports()
     return view('admin.reports');
 }
 
-// Settings
-public function settings()
-{
-    return view('admin.settings');
-}
+
 public function storeUser(Request $request)
 {
     $request->validate([
@@ -214,4 +212,45 @@ public function storeUser(Request $request)
 
     return redirect()->route('admin.users')->with('success', 'User created successfully');
 }
+public function settings()
+{
+    $wallets = WalletSetting::all();
+    return view('admin.settings.wallets', compact('wallets'));
+}
+
+
+
+public function toggleWalletStatus($id)
+{
+    $wallet = WalletSetting::findOrFail($id);
+    $wallet->update(['is_active' => !$wallet->is_active]);
+
+    return back()->with('success', 'Wallet status updated');
+}
+public function walletSettings()
+{
+    $wallets = DepositWallet::all();
+    return view('admin.settings.wallet', compact('wallets'));
+}
+
+public function storeWallet(Request $request)
+{
+    $request->validate([
+        'wallet_address' => 'required|string|max:255|unique:deposit_wallets',
+        'network' => 'required|string|in:TRC20,ERC20,BEP20'
+    ]);
+
+    // Deactivate all other wallets first
+    DepositWallet::query()->update(['is_active' => false]);
+
+    // Create new active wallet
+    DepositWallet::create([
+        'wallet_address' => $request->wallet_address,
+        'network' => $request->network,
+        'is_active' => true
+    ]);
+
+    return back()->with('success', 'Wallet address updated successfully');
+}
+
 }
