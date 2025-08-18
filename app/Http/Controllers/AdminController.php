@@ -168,8 +168,7 @@ class AdminController extends Controller
 
     public function withdrawals()
     {
-        $withdrawals = Transaction::where('type', 'withdrawal')
-                        ->with('user')
+        $withdrawals = Withdrawal::orderBy('ID','DESC')->with('user')
                         ->latest()
                         ->paginate(10);
         return view('admin.withdrawals.index', compact('withdrawals'));

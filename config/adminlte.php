@@ -314,6 +314,11 @@ return [
                 'icon' => 'fas fa-list',
             ],
             [
+                'text' => 'Kyc submissions',
+                'url'  => '/admin/users/kyc',
+                'icon' => 'fas fa-list',
+            ],
+            [
                 'text' => 'Create User',
                 'url'  => '/admin/users/create',
                 'icon' => 'fas fa-user-plus',
