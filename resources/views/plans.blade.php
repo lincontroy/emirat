@@ -32,7 +32,7 @@
                 <ul class="list-unstyled small mb-4">
                     <li>Expected yield: <strong>{{ $plan->yield_percentage }}%</strong></li>
                     <li>Min deposit: <strong>${{ number_format($plan->min_amount, 2) }}</strong></li>
-                    <li>Early withdrawal penalty: <strong>{{ $plan->penalty_percentage }}%</strong></li>
+                  
                     <li>APY: <strong>{{ $plan->apy }}%</strong></li>
                     <li>Duration: <strong>{{ $plan->duration_days }} days</strong></li>
                 </ul>
@@ -44,6 +44,7 @@
                     data-plan-name="{{ $plan->name }}"
                     data-plan-min="{{ $plan->min_amount }}"
                     data-plan-apy="{{ $plan->apy }}"
+                    data-plan-duration="{{ $plan->duration_days }}"
                     aria-label="Subscribe to {{ $plan->name }} plan">
                     Lock / Subscribe
                 </button>
@@ -102,7 +103,6 @@
         </table>
     </div>
 </div>
-</section>
 @endif
 
 <!-- Lock Modal -->
@@ -133,7 +133,9 @@
                     
                     <div class="alert alert-info">
                         <div>APY: <strong id="modalPlanApy">0%</strong></div>
+                        <div>Duration: <strong id="modalPlanDuration">0 days</strong></div>
                         <div>Expected yield: <strong id="expectedYield">$0.00</strong></div>
+                        <div class="text-muted small">Total return: <strong id="totalReturn">$0.00</strong></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -159,7 +161,6 @@
     }
 </style>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const lockModal = document.getElementById('lockModal');
@@ -170,24 +171,42 @@
                 const planName = button.getAttribute('data-plan-name');
                 const planMin = button.getAttribute('data-plan-min');
                 const planApy = button.getAttribute('data-plan-apy');
+                const planDuration = button.getAttribute('data-plan-duration');
                 
                 document.getElementById('modalPlanId').value = planId;
                 document.getElementById('modalPlanName').value = planName;
                 document.getElementById('modalPlanMin').textContent = '$' + parseFloat(planMin).toFixed(2);
                 document.getElementById('modalPlanApy').textContent = planApy + '%';
+                document.getElementById('modalPlanDuration').textContent = planDuration + ' days';
                 document.getElementById('lockAmount').min = planMin;
+                
+                // Store duration for calculation
+                document.getElementById('lockAmount').setAttribute('data-duration', planDuration);
+                
+                // Clear amount and recalculate
+                document.getElementById('lockAmount').value = '';
+                updateYieldCalculation();
             });
         }
 
-        // Calculate expected yield in real-time
+        // Calculate expected yield in real-time - CORRECTED VERSION
         const lockAmount = document.getElementById('lockAmount');
         if (lockAmount) {
-            lockAmount.addEventListener('input', function() {
-                const amount = parseFloat(this.value) || 0;
-                const apy = parseFloat(document.getElementById('modalPlanApy').textContent) || 0;
-                const yield = amount * (apy / 100);
-                document.getElementById('expectedYield').textContent = '$' + yield.toFixed(2);
-            });
+            lockAmount.addEventListener('input', updateYieldCalculation);
+        }
+        
+        function updateYieldCalculation() {
+            const amount = parseFloat(document.getElementById('lockAmount').value) || 0;
+            const apy = parseFloat(document.getElementById('modalPlanApy').textContent) || 0;
+            const durationDays = parseFloat(document.getElementById('lockAmount').getAttribute('data-duration')) || 0;
+            
+            // Calculate actual yield for the specific duration
+            // Formula: Principal × (APY/100 ÷ 365) × Duration in Days
+            const actualYield = amount * (apy / 100 / 365) * durationDays;
+            const totalReturn = amount + actualYield;
+            
+            document.getElementById('expectedYield').textContent = '$' + actualYield.toFixed(2);
+            document.getElementById('totalReturn').textContent = '$' + totalReturn.toFixed(2);
         }
     });
 </script>
