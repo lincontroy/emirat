@@ -22,48 +22,20 @@
             <ul class="list-unstyled">
               <li class="mb-2">
                 <i class="fas fa-envelope text-primary me-2"></i>
-                <strong>Email:</strong> support@emiratefunds.ae
+                <strong>Email:</strong> info@emiratefunds.com
               </li>
               <li class="mb-2">
                 <i class="fas fa-phone-alt text-primary me-2"></i>
-                <strong>Phone:</strong> +971 4 123 4567
+                <strong>Phone:</strong> 
               </li>
               <li class="mb-2">
                 <i class="fas fa-map-marker-alt text-primary me-2"></i>
-                <strong>Address:</strong> Dubai International Financial Centre, UAE
+                <strong>Address:</strong> 
               </li>
             </ul>
           </div>
 
-          <div class="mb-4">
-            <h3 class="h6 text-primary">Department Contacts</h3>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="p-3 bg-light rounded mb-3">
-                  <h4 class="h6"><i class="fas fa-coins me-2"></i>Investments</h4>
-                  <p class="mb-1 small">invest@emiratefunds.ae</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="p-3 bg-light rounded mb-3">
-                  <h4 class="h6"><i class="fas fa-file-signature me-2"></i>KYC</h4>
-                  <p class="mb-1 small">compliance@emiratefunds.ae</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="p-3 bg-light rounded">
-                  <h4 class="h6"><i class="fas fa-money-bill-wave me-2"></i>Withdrawals</h4>
-                  <p class="mb-1 small">finance@emiratefunds.ae</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="p-3 bg-light rounded">
-                  <h4 class="h6"><i class="fas fa-shield-alt me-2"></i>Security</h4>
-                  <p class="mb-1 small">security@emiratefunds.ae</p>
-                </div>
-              </div>
-            </div>
-          </div>
+     
 
        
         </div>
