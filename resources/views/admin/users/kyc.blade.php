@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ $user->kyc_submitted_at?->format('M d, Y H:i') ?? 'N/A' }}</td>
+                             <td>{{ $user->kyc_submitted_at ? \Carbon\Carbon::parse($user->kyc_submitted_at)->format('M d, Y H:i') : 'N/A' }}</td>
                                 <td>
                                     @if($user->kyc_status === 'approved')
                                         <span class="badge bg-success">Verified</span>
