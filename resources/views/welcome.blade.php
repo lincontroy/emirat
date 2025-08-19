@@ -113,14 +113,7 @@
     </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="py-5">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-4">About Emirates Funds</h2>
-        <hr class="section-divider">
-        <p class="mb-5">At Emirates Funds, we provide competitive Money Market Fund and Special Fund solutions designed for both short-term and long-term investors. Our flexible lock-in plans let you choose the investment duration that fits your needs, while enjoying attractive returns with security you can trust.</p>
-    </div>
-</section>
+
 
 <!-- What We Offer Section -->
 <section id="offers" class="py-5" style="background: #f8f9fa;">
@@ -213,6 +206,99 @@
                             <i class="fas fa-shield-alt text-warning fa-2x mb-2"></i>
                             <h6 class="fw-bold">Risk Management</h6>
                             <small class="text-muted">Professional portfolio balancing</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="fw-bold mb-4">About Emirates Special Funds</h2>
+                <hr class="section-divider">
+                <p class="lead mb-4">Emirates Special Funds is a Leveraged Asset Allocation Fund domiciled in United Kingdom. It offers investors a unique opportunity to access both local and global markets.</p>
+                <p class="mb-4">The fund is managed by leading global investment firms including Aviva Investors, Investec, HSBC and Capital Group, and is licensed as a Special Collective Investment Scheme (CIS).</p>
+            </div>
+        </div>
+        
+        <div class="row g-4 mt-4">
+            <!-- Regulatory Information -->
+            <div class="col-lg-6">
+                <div class="offer-card">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-shield-alt text-primary me-2"></i>Regulatory Oversight</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span class="fw-semibold">Financial Conduct Authority (FCA-UK)</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span class="fw-semibold">Securities and Exchange Commission (SEC-USA)</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span class="fw-semibold">Financial Sector Conduct Authority (FSCA-SA)</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span class="fw-semibold">Capital Markets Authority (CMA-Kenya)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Information -->
+            <div class="col-lg-6">
+                <div class="offer-card">
+                    <h5 class="fw-bold mb-3"><i class="fas fa-info-circle text-primary me-2"></i>Key Information</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Inception Date:</span>
+                                <span class="fw-semibold">March 2023</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Base Currency:</span>
+                                <span class="fw-semibold">US Dollar (USD)</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Minimum Investment:</span>
+                                <span class="fw-semibold text-success">$100</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Maximum Lock-in Period:</span>
+                                <span class="fw-semibold">6 months</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Fund Manager:</span>
+                                <span class="fw-semibold">Legal and General plc</span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-muted">Regulated By:</span>
+                                <span class="fw-semibold">SEC, FSCA, FCA, CMA</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -342,6 +428,98 @@
     </div>
 </section>
 
+<!-- FAQ Section -->
+<section id="faq" class="py-5" style="background: #f8f9fa;">
+    <div class="container">
+        <h2 class="fw-bold text-center mb-4">Frequently Asked Questions</h2>
+        <hr class="section-divider">
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8">
+                <div class="accordion" id="faqAccordion">
+                    
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What is the minimum investment amount?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                The minimum investment amount varies by plan. Our 7-day plan starts from AED 1,000, while our 30-day and 6-month plans have a minimum of AED 5,000. Contact us for specific details about investment thresholds.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                How are returns calculated and paid?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Returns are calculated on an annual basis (p.a.) and paid proportionally based on your investment period. For example, a 30-day investment at 6.5% p.a. would earn approximately 0.54% for the month. Returns are credited to your account at maturity.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                What asset classes does the Special Fund invest in?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our Special Fund maintains a diversified portfolio across multiple asset classes including equities, fixed income securities, real estate investment trusts (REITs), commodities, and alternative investments. We invest both locally in the UAE market and internationally to optimize risk-adjusted returns.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Can I withdraw my investment before maturity?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our investment plans have specific lock-in periods to ensure optimal returns. Early withdrawal may be possible under certain circumstances but could result in reduced returns or penalties. We recommend choosing a plan that aligns with your liquidity needs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                Is my investment insured or guaranteed?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Emirates Funds operates under strict regulatory oversight and employs robust risk management practices. While investments carry inherent market risks, we prioritize capital preservation through diversified portfolios and professional fund management. Past performance and risk profiles are available upon request.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item faq-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                How do I track my investment performance?
+                            </button>
+                        </h2>
+                        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Once you invest, you'll receive access to our online portal where you can track your investment performance in real-time, view statements, and monitor fund allocations. We also provide regular updates via email and SMS.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Contact Section -->
 <section id="contact" class="py-5 bg-light">
