@@ -68,6 +68,7 @@ class AdminController extends Controller
             $user->kyc_verified_at = now();
             // Exact case match from ENUM definition
             $user->save(); // More reliable for ENUM updates
+            Mail::to($user->email)->send(new KYCApprovedNotification($user));
            
         }catch(Exception $e){
             dd($e->getMessage);
