@@ -32,7 +32,7 @@
             </div>
             <div class="metric" id="availableBalance" data-available="{{ auth()->user()->balance_usd }}">
             @php
-    $balance = auth()->user()->available_balance;
+    $balance = auth()->user()->balance_usd;
     $displayValue = $balance == 0 ? '0' : number_format(abs($balance), $balance == 0 ? 0 : 2);
 @endphp
 
