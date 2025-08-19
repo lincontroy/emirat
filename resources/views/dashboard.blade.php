@@ -68,8 +68,8 @@ ${{ $displayValue }}
               </div>
               <div class="d-flex align-items-baseline gap-3">
                 <div>
-                  <div class="metric" id="dailyYield" data-daily-yield="0.034">+0.034%</div>
-                  <div class="metric-sub">Daily</div>
+                  <div class="metric" id="dailyYield" data-daily-yield="0.034">+0.594%</div>
+                  <div class="metric-sub">Avarege yield</div>
                 </div>
                 
               </div>
