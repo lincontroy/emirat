@@ -7,7 +7,7 @@
     </div>
     <form method="POST" action="{{ route('admin.users.update', $user) }}">
         @csrf
-        @method('PUT')
+      
         <div class="card-body">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -24,6 +24,10 @@
                     <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="wallet">Wallet</label>
+                <input type="text" class="form-control" id="wallet" name="balance_usd" value="{{ old('balance_usd', $user->balance_usd) }}" required>
             </div>
         </div>
         <div class="card-footer">

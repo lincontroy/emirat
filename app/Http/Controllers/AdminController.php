@@ -18,6 +18,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use App\Mail\KYCApprovedNotification;
 use App\Mail\KYCRejectedNotification;
 use Illuminate\Support\Facades\Mail;
+use Log;
 
 class AdminController extends Controller
 {
@@ -133,16 +134,36 @@ class AdminController extends Controller
 
     public function updateUser(Request $request, User $user)
     {
+
+        // dd($user);
         $request->validate([
             'name' => 'required|string|max:255',
+            // 'balance_usd'=>'required',
             'email' => 'required|email|unique:users,email,'.$user->id,
-            'roles' => 'required|array',
+            // 'roles' => 'required',
         ]);
 
-        $user->update($request->only(['name', 'email']));
-        $user->syncRoles($request->roles);
-
-        return redirect()->route('admin.users')->with('success', 'User updated successfully');
+        try {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->balance_usd = number_format((float)$request->balance_usd, 2, '.', '');
+            $user->save();
+            
+            $user->syncRoles($request->roles);
+        
+            return redirect()->route('admin.users')->with('success', 'User updated successfully');
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            \Log::error('Error updating user: ' . $e->getMessage());
+            \Log::error('Stack trace: ' . $e->getTraceAsString());
+            
+            // You can also dump the error to the screen temporarily for debugging
+            // dd($e->getMessage(), $e->getTrace());
+            
+            return redirect()->back()
+                ->withInput()
+                ->with('error', 'Error updating user: ' . $e->getMessage());
+        }
     }
 
     public function deposits()

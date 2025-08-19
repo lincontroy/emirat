@@ -51,7 +51,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     // Users Management
     Route::get('/users', [AdminController::class, 'users'])->name('users');
     Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
-    Route::put('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::post('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
     
     // Deposits Management
     Route::get('/deposits', [AdminController::class, 'deposits'])->name('deposits');
