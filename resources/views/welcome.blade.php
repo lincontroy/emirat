@@ -121,21 +121,8 @@
         <h2 class="fw-bold text-center mb-4">What We Offer</h2>
         <hr class="section-divider">
         <div class="row g-4 mt-4">
-            <div class="col-lg-6">
-                <div class="offer-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-coins fa-2x text-primary me-3"></i>
-                        <h4 class="fw-bold mb-0">Money Market Fund</h4>
-                    </div>
-                    <p class="text-muted">Short-term investment solutions with competitive returns and high liquidity. Perfect for investors seeking stable growth with easy access to their funds.</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>High liquidity</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Low risk profile</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Competitive returns</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-6">
+           
+            <div class="col-lg-12">
                 <div class="offer-card">
                     <div class="d-flex align-items-center mb-3">
                         <i class="fas fa-globe fa-2x text-primary me-3"></i>
