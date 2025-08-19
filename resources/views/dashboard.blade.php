@@ -30,7 +30,7 @@
                 <span class="text-muted">Available</span>
                 <span class="badge text-bg-success">Liquid</span>
             </div>
-            <div class="metric" id="availableBalance" data-available="{{ auth()->user()->available_balance }}">
+            <div class="metric" id="availableBalance" data-available="{{ auth()->user()->balance_usd }}">
             @php
     $balance = auth()->user()->available_balance;
     $displayValue = $balance == 0 ? '0' : number_format(abs($balance), $balance == 0 ? 0 : 2);
