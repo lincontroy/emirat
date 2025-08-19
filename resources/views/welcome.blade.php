@@ -305,7 +305,7 @@
                 <div class="card plan-card p-4 text-center text-white" style="background: linear-gradient(135deg, #00c6ff, #0072ff); border: none;">
                     <h4 class="fw-bold">7 Days Plan</h4>
                     <p>Perfect for quick returns with minimal lock-in period.</p>
-                    <h3>5% p.a</h3>
+                    <h3>UPTO 190% APY</h3>
                     <a href="/login" class="btn btn-light text-primary fw-bold mt-3">Invest Now</a>
                 </div>
             </div>
@@ -314,7 +314,7 @@
                 <div class="card plan-card p-4 text-center text-white" style="background: linear-gradient(135deg, #ff7e5f, #feb47b); border: none;">
                     <h4 class="fw-bold">30 Days Plan</h4>
                     <p>Ideal for those seeking steady growth within a month.</p>
-                    <h3>6.5% p.a</h3>
+                    <h3>UPTO 230% APY</h3>
                     <a href="/login" class="btn btn-light text-danger fw-bold mt-3">Invest Now</a>
                 </div>
             </div>
@@ -323,7 +323,7 @@
                 <div class="card plan-card p-4 text-center text-white" style="background: linear-gradient(135deg, #43cea2, #185a9d); border: none;">
                     <h4 class="fw-bold">6 Months Plan</h4>
                     <p>Best choice for long-term returns and higher rates.</p>
-                    <h3>8% p.a</h3>
+                    <h3>UPTO 290% APY</h3>
                     <a href="/login" class="btn btn-light text-success fw-bold mt-3">Invest Now</a>
                 </div>
             </div>

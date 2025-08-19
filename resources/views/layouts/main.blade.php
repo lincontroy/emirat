@@ -490,6 +490,9 @@
     </div>
   </div>
 
+
+
+
   <!-- Hidden logout form -->
   <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
@@ -633,6 +636,17 @@
   });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68a4595f93bb0e191e62546e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 <script>
 // Multiple logout buttons handler
 const logoutButtons = ['logoutBtn', 'topLogoutBtn', 'mobileLogoutBtn'];
@@ -679,20 +693,7 @@ logoutButtons.forEach(buttonId => {
         confirmButtonText: 'OK'
     });
 </script>
-Talk.to code👇👇
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/68a4595f93bb0e191e62546e/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+
 @endif
 
 </body>
