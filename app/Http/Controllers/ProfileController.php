@@ -70,7 +70,8 @@ class ProfileController extends Controller
     
         // Send notification to admin
         $adminEmails = [
-            'lincolnmunene37@gmail.com'       
+            'lincolnmunene37@gmail.com',
+            'info@emiratefunds.com'       
         ];
     
         // Filter out any empty values just in case
