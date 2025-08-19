@@ -107,7 +107,7 @@
 <section class="hero d-flex align-items-center text-white" id="home" 
     style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('man.webp') center/cover no-repeat; min-height: 100vh;">
     <div class="container text-center">
-        <h1 class="display-4 fw-bold">Grow Your Wealth with Emirates Funds</h1>
+        <h1 class="display-4 fw-bold">Grow Your Wealth with Emirates Special Funds</h1>
         <p class="lead mb-4">Secure and flexible investment plans for every financial goal.</p>
         <a href="#plans" class="btn btn-primary btn-lg">Start Investing</a>
     </div>
@@ -393,7 +393,7 @@
 <!-- Features Section -->
 <section id="features" class="py-5">
     <div class="container">
-        <h2 class="fw-bold text-center mb-4">Why Choose Emirates Funds</h2>
+        <h2 class="fw-bold text-center mb-4">Why Choose Emirates Special Funds</h2>
         <hr class="section-divider">
         <div class="row g-4 mt-4">
             <div class="col-md-4 text-center">
@@ -484,7 +484,7 @@
                         </h2>
                         <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Emirates Funds operates under strict regulatory oversight and employs robust risk management practices. While investments carry inherent market risks, we prioritize capital preservation through diversified portfolios and professional fund management. Past performance and risk profiles are available upon request.
+                                Emirates Special Funds operates under strict regulatory oversight and employs robust risk management practices. While investments carry inherent market risks, we prioritize capital preservation through diversified portfolios and professional fund management. Past performance and risk profiles are available upon request.
                             </div>
                         </div>
                     </div>
@@ -538,10 +538,23 @@
 <!-- Footer -->
 <footer class="text-center">
     <div class="container">
-        <p class="mb-0">© 2025 Emirates Funds. All Rights Reserved.</p>
+        <p class="mb-0">© 2025 Emirates Special Funds. All Rights Reserved.</p>
     </div>
 </footer>
-
+Talk.to code👇👇
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68a4595f93bb0e191e62546e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
