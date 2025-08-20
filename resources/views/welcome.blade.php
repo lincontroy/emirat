@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emirates Funds</title>
+    <title>Emirate Special Funds</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -85,7 +85,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Emirates Funds</a>
+        <a class="navbar-brand fw-bold" href="#">Emirate Special Funds</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -107,7 +107,7 @@
 <section class="hero d-flex align-items-center text-white" id="home" 
     style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('man.webp') center/cover no-repeat; min-height: 100vh;">
     <div class="container text-center">
-        <h1 class="display-4 fw-bold">Grow Your Wealth with Emirates Special Funds</h1>
+        <h1 class="display-4 fw-bold">Grow Your Wealth with Emirate Special Funds</h1>
         <p class="lead mb-4">Secure and flexible investment plans for every financial goal.</p>
         <a href="#plans" class="btn btn-primary btn-lg">Start Investing</a>
     </div>
@@ -128,7 +128,7 @@
                         <i class="fas fa-globe fa-2x text-primary me-3"></i>
                         <h4 class="fw-bold mb-0">Special Fund</h4>
                     </div>
-                    <p class="text-muted">Emirates Special Fund invests in a comprehensive range of asset classes including global forex trading, commodities, equities, bonds, real estate, and alternative investments to ensure optimal diversification and risk-adjusted returns.</p>
+                    <p class="text-muted">Emirate Special Fund invests in a comprehensive range of asset classes including global forex trading, commodities, equities, bonds, real estate, and alternative investments to ensure optimal diversification and risk-adjusted returns.</p>
                     
                     <div class="row g-3 mt-3">
                         <div class="col-6">
@@ -205,9 +205,9 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 mx-auto text-center">
-                <h2 class="fw-bold mb-4">About Emirates Special Funds</h2>
+                <h2 class="fw-bold mb-4">About Emirate Special Funds</h2>
                 <hr class="section-divider">
-                <p class="lead mb-4">Emirates Special Funds is a Leveraged Asset Allocation Fund domiciled in United Kingdom. It offers investors a unique opportunity to access both local and global markets.</p>
+                <p class="lead mb-4">Emirate Special Funds is a Leveraged Asset Allocation Fund domiciled in United Kingdom. It offers investors a unique opportunity to access both local and global markets.</p>
                 <p class="mb-4">The fund is managed by leading global investment firms including Aviva Investors, Investec, HSBC and Capital Group, and is licensed as a Special Collective Investment Scheme (CIS).</p>
             </div>
         </div>
@@ -336,7 +336,7 @@
     <div class="container">
         <h2 class="fw-bold text-center mb-4">Our Investment Portfolio</h2>
         <hr class="section-divider">
-        <p class="text-center text-muted mb-5">Emirates Special Fund achieves superior diversification through strategic allocation across multiple asset classes</p>
+        <p class="text-center text-muted mb-5">Emirate Special Fund achieves superior diversification through strategic allocation across multiple asset classes</p>
         
         <div class="row g-4">
             <div class="col-lg-4 col-md-6">
@@ -393,7 +393,7 @@
 <!-- Features Section -->
 <section id="features" class="py-5">
     <div class="container">
-        <h2 class="fw-bold text-center mb-4">Why Choose Emirates Special Funds</h2>
+        <h2 class="fw-bold text-center mb-4">Why Choose Emirate Special Funds</h2>
         <hr class="section-divider">
         <div class="row g-4 mt-4">
             <div class="col-md-4 text-center">
@@ -484,7 +484,7 @@
                         </h2>
                         <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Emirates Special Funds operates under strict regulatory oversight and employs robust risk management practices. While investments carry inherent market risks, we prioritize capital preservation through diversified portfolios and professional fund management. Past performance and risk profiles are available upon request.
+                                Emirate Special Funds operates under strict regulatory oversight and employs robust risk management practices. While investments carry inherent market risks, we prioritize capital preservation through diversified portfolios and professional fund management. Past performance and risk profiles are available upon request.
                             </div>
                         </div>
                     </div>
@@ -538,7 +538,7 @@
 <!-- Footer -->
 <footer class="text-center">
     <div class="container">
-        <p class="mb-0">© 2025 Emirates Special Funds. All Rights Reserved.</p>
+        <p class="mb-0">© 2025 Emirate Special Funds. All Rights Reserved.</p>
     </div>
 </footer>
 Talk.to code👇👇
