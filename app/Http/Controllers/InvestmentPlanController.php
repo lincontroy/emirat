@@ -11,9 +11,49 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use App\Mail\NewKYCSubmissionNotification;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
+use App\Models\User;
 
 class InvestmentPlanController extends Controller
 {
+
+
+    public function processLockedPlans()
+    {
+        $plans = UserLockedPlan::where('status', 'active')->get();
+
+        foreach ($plans as $plan) {
+            $user = User::find($plan->user_id);
+            if (!$user) continue;
+
+            $totalPayout = $plan->amount + $plan->expected_yield;
+            $days = Carbon::parse($plan->start_date)->diffInDays(Carbon::parse($plan->end_date)) + 1;
+            $dailyPayout = $totalPayout / $days;
+
+            // days passed
+            $daysPassed = Carbon::parse($plan->start_date)->diffInDays(Carbon::now()) + 1;
+            $expectedSoFar = min($daysPassed, $days) * $dailyPayout;
+
+            $alreadyPaid = $plan->paid_out ?? 0; // requires `paid_out` column
+            $toPay = $expectedSoFar - $alreadyPaid;
+
+            if ($toPay > 0) {
+                DB::transaction(function () use ($user, $plan, $toPay) {
+                    $user->increment('balance_usd', $toPay);
+                    $plan->paid_out = $plan->paid_out + $toPay;
+                    $plan->save();
+                });
+            }
+
+            if ($plan->paid_out >= $totalPayout) {
+                $plan->status = 'completed';
+                $plan->save();
+                // optionally delete: $plan->delete();
+            }
+        }
+
+        return response()->json(['message' => 'Locked plans processed successfully.']);
+    }
     public function index()
 {
     $plans = InvestmentPlan::where('is_active', true)->get();

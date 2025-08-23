@@ -8,6 +8,7 @@ use App\Http\Controllers\InvestmentPlanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WithdrawalController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -15,6 +16,7 @@ Route::get('/', function () {
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/cron/process-locked-plans', [InvestmentPlanController::class, 'processLockedPlans']);
 
 Route::middleware('auth')->group(function () {
     Route::post('/kyc/submit', [ProfileController::class, 'submitKYC'])->name('kyc.submit');
