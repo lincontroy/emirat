@@ -52,7 +52,7 @@
                         <div class="col-12">
                             <label for="walletAddress" class="form-label">Wallet Address</label>
                             <input type="text" class="form-control" id="walletAddress" name="wallet_address" 
-                                   placeholder="0x..." required value="{{ old('wallet_address') }}">
+                                   placeholder="T...." required value="{{ old('wallet_address') }}">
                             @error('wallet_address')
                                 <div class="text-danger small">{{ $message }}</div>
                             @enderror
@@ -72,10 +72,10 @@
                         <div class="col-12">
                             <div class="alert alert-info py-2">
                                 <div class="d-flex justify-content-between">
-                                    <span>Estimated receiving amount:</span>
-                                    <strong id="cryptoEstimate">0.00 <span id="cryptoCurrency">ETH</span></strong>
+                                    <span>Withdrawal fee: 5 USDT</span>
+                                  
                                 </div>
-                                <div class="small text-muted">Rate: 1 ETH = $<span id="cryptoRate">0.00</span></div>
+                             
                             </div>
                         </div>
                         
