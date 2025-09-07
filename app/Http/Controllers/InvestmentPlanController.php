@@ -22,35 +22,46 @@ class InvestmentPlanController extends Controller
     {
         $plans = UserLockedPlan::where('status', 'active')->get();
 
-        foreach ($plans as $plan) {
-            $user = User::find($plan->user_id);
-            if (!$user) continue;
+foreach ($plans as $plan) {
+    $user = User::find($plan->user_id);
+    if (!$user) continue;
 
-            $totalPayout = $plan->amount + $plan->expected_yield;
-            $days = Carbon::parse($plan->start_date)->diffInDays(Carbon::parse($plan->end_date)) + 1;
-            $dailyPayout = $totalPayout / $days;
+    $start = Carbon::parse($plan->start_date);
+    $end = Carbon::parse($plan->end_date);
+    $now = Carbon::now();
 
-            // days passed
-            $daysPassed = Carbon::parse($plan->start_date)->diffInDays(Carbon::now()) + 1;
-            $expectedSoFar = min($daysPassed, $days) * $dailyPayout;
+    // Skip if we haven't reached the first payout time yet
+    if ($now->lt($start->copy()->addDay()->startOfDay())) {
+        continue;
+    }
 
-            $alreadyPaid = $plan->paid_out ?? 0; // requires `paid_out` column
-            $toPay = $expectedSoFar - $alreadyPaid;
+    $totalPayout = $plan->amount + $plan->expected_yield;
+    $days = $start->diffInDays($end) + 1;
+    $dailyPayout = $totalPayout / $days;
 
-            if ($toPay > 0) {
-                DB::transaction(function () use ($user, $plan, $toPay) {
-                    $user->increment('balance_usd', $toPay);
-                    $plan->paid_out = $plan->paid_out + $toPay;
-                    $plan->save();
-                });
-            }
+    // Calculate how many full days have passed since start_date
+    $daysPassed = $start->diffInDays($now->startOfDay());
 
-            if ($plan->paid_out >= $totalPayout) {
-                $plan->status = 'completed';
-                $plan->save();
-                // optionally delete: $plan->delete();
-            }
-        }
+    $expectedSoFar = min($daysPassed, $days) * $dailyPayout;
+    $alreadyPaid = $plan->paid_out ?? 0;
+    $toPay = $expectedSoFar - $alreadyPaid;
+
+    // Only pay if we are at or after today's payout time
+    if ($toPay > 0) {
+        DB::transaction(function () use ($user, $plan, $toPay) {
+            $user->increment('balance_usd', $toPay);
+            $plan->paid_out += $toPay;
+            $plan->last_payout_at = now(); // optional column for tracking last payout
+            $plan->save();
+        });
+    }
+
+    if ($plan->paid_out >= $totalPayout) {
+        $plan->status = 'completed';
+        $plan->save();
+    }
+}
+
 
         return response()->json(['message' => 'Locked plans processed successfully.']);
     }
