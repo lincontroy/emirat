@@ -500,6 +500,66 @@
 
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  
+  <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/447446970806"
+class="whatsapp-float"
+target="_blank"
+rel="noopener"
+aria-label="Chat with us on WhatsApp">
+<!-- WhatsApp SVG icon -->
+<svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+ <path fill="#fff" d="M19.11 17.57c-.28-.14-1.63-.8-1.88-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.28-.14-1.16-.43-2.2-1.38-.81-.72-1.36-1.6-1.52-1.87-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.46-.16 0-.34-.02-.52-.02-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.99 2.66 1.13 2.84c.14.18 1.95 2.98 4.72 4.18.66.28 1.18.45 1.58.58.66.21 1.25.18 1.72.11.53-.08 1.63-.66 1.86-1.31.23-.64.23-1.19.16-1.31-.07-.11-.25-.18-.53-.32z"/>
+ <path fill="#25D366" d="M27.63 4.37A15.94 15.94 0 0 0 16 .03C7.19.03.05 7.17.05 16c0 2.8.73 5.58 2.12 8.02L.03 32l8.2-2.11A15.87 15.87 0 0 0 16 31.95c8.83 0 15.97-7.14 15.97-15.97 0-4.27-1.66-8.28-4.34-11.61zM16 29.37c-2.56 0-5.02-.69-7.19-2l-.51-.3-4.87 1.25 1.3-4.75-.33-.54A13.35 13.35 0 1 1 29.35 16 13.36 13.36 0 0 1 16 29.37z"/>
+</svg>
+</a>
+
+<style>
+.whatsapp-float{
+ position: fixed;
+ left: 16px;
+ bottom: 16px;
+ width: 56px;
+ height: 56px;
+ background: #25D366;
+ color: #fff;
+ border-radius: 50%;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ box-shadow: 0 8px 24px rgba(0,0,0,.2);
+ text-decoration: none;
+ z-index: 9999;
+ transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.whatsapp-float:hover{
+ transform: translateY(-2px);
+ box-shadow: 0 12px 28px rgba(0,0,0,.25);
+}
+/* subtle pulse to attract attention */
+.whatsapp-float::after{
+ content: "";
+ position: absolute;
+ inset: 0;
+ border-radius: 50%;
+ box-shadow: 0 0 0 0 rgba(37,211,102,.5);
+ animation: wpp-pulse 2s infinite;
+}
+@keyframes wpp-pulse{
+ 0% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+ 70% { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+ 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+/* respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce){
+ .whatsapp-float,
+ .whatsapp-float::after{
+   animation: none !important;
+   transition: none !important;
+ }
+}
+</style>
+
   <script>
   document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
