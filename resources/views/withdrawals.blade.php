@@ -39,11 +39,8 @@
                             <label for="cryptoNetwork" class="form-label">Network</label>
                             <select id="cryptoNetwork" name="network" class="form-select" required>
                                 <option value="" disabled selected>Select network</option>
-                                <option value="ERC20" {{ old('network') == 'ERC20' ? 'selected' : '' }}>Ethereum (ERC20)</option>
-                                <option value="BEP20" {{ old('network') == 'BEP20' ? 'selected' : '' }}>Binance Smart Chain (BEP20)</option>
-                                <option value="TRC20" {{ old('network') == 'TRC20' ? 'selected' : '' }}>Tron (TRC20)</option>
-                                <option value="BTC" {{ old('network') == 'BTC' ? 'selected' : '' }}>Bitcoin (BTC)</option>
-                                <option value="SOL" {{ old('network') == 'SOL' ? 'selected' : '' }}>Solana (SOL)</option>
+                               <option value="TRC20" {{ old('network') == 'TRC20' ? 'selected' : '' }}>Tron (TRC20)</option>
+                                
                             </select>
                             @error('network')
                                 <div class="text-danger small">{{ $message }}</div>
