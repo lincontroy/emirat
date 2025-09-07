@@ -175,14 +175,26 @@ class AdminController extends Controller
 
     public function updateDepositStatus(Request $request, Deposit $deposit)
     {
+
+        // dd($deposit);
         $request->validate([
             'status' => 'required|in:pending,completed,rejected',
         ]);
 
+        //get the last transaction of that user
+
+        $transaction = Transaction::where('user_id', $deposit->user_id)
+        ->where('status', 'pending')
+        ->latest() // orders by created_at desc by default
+        ->first();
+
+
         $deposit->update(['status' => $request->status]);
+        $transaction->update(['status' => $request->status]);
 
         if ($request->status === 'completed') {
             $deposit->user->increment('balance_usd', $deposit->amount);
+
         }
 
         return back()->with('success', 'Deposit status updated');
@@ -198,11 +210,27 @@ class AdminController extends Controller
 
     public function updateWithdrawalStatus(Request $request, Transaction $withdrawal)
     {
+
+        // dd($withdrawal);
+
+        
         $request->validate([
             'status' => 'required|in:pending,processing,completed,rejected',
         ]);
 
-        $withdrawal->update(['status' => $request->status]);
+        $transaction = Withdrawal::where('user_id', $withdrawal->user_id)
+        ->where('status', 'pending')
+        ->latest() // orders by created_at desc by default
+        ->first();
+
+        // dd($transaction);
+
+
+        // $withdrawal = Withdrawal::findOrFail($id); // Or however you get it
+        $withdrawal->update([
+            'status' => $request->input('status'),
+        ]);
+        $transaction->update(['status' => $request->status]);
 
         return back()->with('success', 'Withdrawal status updated');
     }

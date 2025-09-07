@@ -110,7 +110,7 @@ public function lock(Request $request)
 
         // Create transaction record
         $user->transactions()->create([
-            'type' => 'plan_lock',
+            'type' => 'UserLockedPlan',
             'amount' => $principal,
             'status' => 'completed',
             'meta' => [
@@ -129,54 +129,4 @@ public function lock(Request $request)
     });
 }
 
-    public function unlock(Request $request, UserLockedPlan $lockedPlan)
-    {
-        if ($lockedPlan->user_id !== $request->user()->id) {
-            abort(403);
-        }
-
-        if ($lockedPlan->status !== 'active') {
-            return back()->withErrors(['plan' => 'Plan is not active']);
-        }
-
-        return DB::transaction(function () use ($lockedPlan, $request) {
-            $user = $request->user();
-            $plan = $lockedPlan->plan;
-            $isEarly = $lockedPlan->end_date > now();
-            $penalty = $isEarly ? $lockedPlan->amount * ($plan->penalty_percentage / 100) : 0;
-            $returnAmount = $lockedPlan->amount - $penalty;
-
-            // Update locked plan
-            $lockedPlan->update([
-                'status' => $isEarly ? 'early_withdrawn' : 'completed',
-                'tx_hash' => 'unlock_'.uniqid(),
-            ]);
-
-            // Return funds to user
-            $user->increment('balance_usd', $returnAmount);
-
-            // If matured, add yield
-            if (!$isEarly) {
-                $user->increment('balance_usd', $lockedPlan->expected_yield);
-            }
-
-            // Create transaction record
-            $user->transactions()->create([
-                'type' => $isEarly ? 'early_unlock' : 'plan_matured',
-                'amount' => $returnAmount,
-                'status' => 'completed',
-                'meta' => [
-                    'plan_name' => $plan->name,
-                    'original_amount' => $lockedPlan->amount,
-                    'penalty' => $penalty,
-                    'yield' => $isEarly ? 0 : $lockedPlan->expected_yield,
-                ]
-            ]);
-
-            return back()->with('success', 
-                $isEarly 
-                    ? "Early withdrawal processed with {$plan->penalty_percentage}% penalty"
-                    : "Plan matured! You earned {$lockedPlan->expected_yield} USD yield");
-        });
-    }
 }

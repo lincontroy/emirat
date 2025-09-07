@@ -23,6 +23,10 @@ class UserLockedPlan extends Model
         return $this->belongsTo(User::class);
     }
 
+        public function transaction()
+        {
+            return $this->morphOne(Transaction::class, 'transactionable');
+        }
     public function plan(): BelongsTo
     {
         return $this->belongsTo(InvestmentPlan::class);

@@ -47,7 +47,7 @@
         $badgeClass = match(true) {
             $transaction->transactionable_type === 'App\Models\Deposit' => 'success',
             $transaction->transactionable_type === 'App\Models\Withdrawal' => 'danger',
-            str_contains($transaction->transactionable_type, 'Lock') => 'warning',
+            $transaction->transactionable_type === 'App\Models\InvestmentPlan' => 'warning',
             default => 'primary'
         };
         
@@ -56,7 +56,7 @@
             $transaction->transactionable_type === 'App\Models\Deposit' => 'Deposit',
             $transaction->transactionable_type === 'App\Models\Withdrawal' => 'Withdrawal',
             str_contains($transaction->transactionable_type, 'Lock') => 'Lock',
-            default => $transaction->transactionable_type
+            default => "InvestmentPlan"
         };
     @endphp
     <span class="badge text-bg-{{ $badgeClass }}">
