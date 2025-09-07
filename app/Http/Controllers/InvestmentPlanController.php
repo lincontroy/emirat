@@ -66,6 +66,7 @@ foreach ($plans as $plan) {
     }
 
     if ($plan->paid_out >= $totalPayout) {
+        $plan->amount = '0';
         $plan->status = 'completed';
         $plan->save();
     }
