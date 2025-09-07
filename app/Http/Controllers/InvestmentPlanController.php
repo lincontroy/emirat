@@ -23,6 +23,13 @@ class InvestmentPlanController extends Controller
         $plans = UserLockedPlan::where('status', 'active')->get();
 
 foreach ($plans as $plan) {
+
+    //get the plan duration
+
+    
+    // dd($planduration_days);
+
+    // dd($plan);
     $user = User::find($plan->user_id);
     if (!$user) continue;
 
@@ -39,8 +46,10 @@ foreach ($plans as $plan) {
     $days = $start->diffInDays($end) + 1;
     $dailyPayout = $totalPayout / $days;
 
+    // dd($dailyPayout);
+
     // Calculate how many full days have passed since start_date
-    $daysPassed = $start->diffInDays($now->startOfDay());
+    $daysPassed = min($start->diffInDays($now) + 1, $days); 
 
     $expectedSoFar = min($daysPassed, $days) * $dailyPayout;
     $alreadyPaid = $plan->paid_out ?? 0;
