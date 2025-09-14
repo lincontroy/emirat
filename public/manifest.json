@@ -1,24 +1,16 @@
 {
-    "name": "Emirate Special Funds",
-    "short_name": "Emirate",
-    "description": "Secure and flexible investment plans for every financial goal.",
+    "name": "Emirate funds",
+    "short_name": "LPT",
+    "background_color": "#6777ef",
+    "display": "fullscreen",
+    "description": "A Progressive Web Application setup for Laravel projects.",
+    "theme_color": "#6777ef",
     "start_url": "/",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#2563eb",
-    "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/logo.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "maskable any"
-        },
-        {
-            "src": "/logo.png",
+            "src": "logo.png",
             "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable any"
+            "type": "image/png"
         }
     ]
 }

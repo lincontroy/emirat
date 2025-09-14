@@ -79,6 +79,7 @@
             width: 80px;
         }
     </style>
+    @PwaHead
 </head>
 <body>
 
@@ -652,5 +653,6 @@ s0.parentNode.insertBefore(s1,s0);
             .then(manifest => console.log('Manifest loaded:', manifest))
             .catch(error => console.error('Manifest error:', error));
         </script>
+        @RegisterServiceWorkerScript
 </body>
 </html>
