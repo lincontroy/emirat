@@ -24,7 +24,7 @@
                                    max="{{ auth()->user()->balance }}" 
                                    value="{{ old('amount') }}">
                             <div class="form-text">
-                                Available: <span id="availableBalance">${{ number_format(auth()->user()->balance, 2) }}</span>
+                                Available: <span id="availableBalance">${{ number_format(auth()->user()->balance_usd, 2) }}</span>
                                 @if(auth()->user()->locked_balance > 0)
                                     (Locked: ${{ number_format(auth()->user()->locked_balance, 2) }})
                                 @endif
