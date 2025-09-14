@@ -2,6 +2,7 @@ const CACHE_NAME = 'laravel-pwa-v1';
 const urlsToCache = [
     
     '/logo.png',
+    '/manifest.json'
 ];
 
 self.addEventListener('install', (event) => {

@@ -640,5 +640,17 @@ s0.parentNode.insertBefore(s1,s0);
         });
     }
     </script>
+    <script>
+        // Debug PWA status
+        console.log('Is HTTPS:', location.protocol === 'https:');
+        console.log('Has Service Worker:', 'serviceWorker' in navigator);
+        console.log('Is Standalone:', window.matchMedia('(display-mode: standalone)').matches);
+        
+        // Check manifest
+        fetch('/manifest.json')
+            .then(response => response.json())
+            .then(manifest => console.log('Manifest loaded:', manifest))
+            .catch(error => console.error('Manifest error:', error));
+        </script>
 </body>
 </html>
