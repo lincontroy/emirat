@@ -28,13 +28,13 @@
                     <td>${{ number_format($withdrawal->amount, 2) }}</td>
                     <td>{{ ucfirst($withdrawal->method) }}</td>
                     <td>
-                        {{ ucfirst($withdrawal->method) }}
+                       
                         @php
                             $details = is_string($withdrawal->details) ? json_decode($withdrawal->details, true) : $withdrawal->details;
                         @endphp
                         @if(!empty($details['wallet_address']))
-                            <br>
-                            <small class="text-muted">Wallet: {{ $details['wallet_address'] }}</small>
+                        
+                            <b class="text-muted">{{ $details['wallet_address'] }}</b>
                         @endif
                     </td>
                     
