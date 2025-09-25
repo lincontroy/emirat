@@ -45,7 +45,7 @@
                                 <input type="hidden" name="status" value="processing">
                                 <button type="submit" class="btn btn-sm btn-info">Processing</button>
                             </form>
-                            <form action="{{ route('admin.withdrawals.update', $withdrawal) }}" method="POST">
+                            <form action="{{ route('withdrawals.update', $withdrawal) }}" method="POST">
                                 @csrf
                                
                                 <input type="hidden" name="status" value="completed">
