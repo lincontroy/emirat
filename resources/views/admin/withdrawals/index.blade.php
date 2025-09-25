@@ -39,7 +39,7 @@
                     <td>{{ $withdrawal->created_at->format('M d, Y H:i') }}</td>
                     <td>
                         <div class="btn-group">
-                            <form action="{{ route('admin.withdrawals.update', $withdrawal) }}" method="POST">
+                            <form action="{{ route('withdrawals.update', $withdrawal) }}" method="POST">
                                 @csrf
                                
                                 <input type="hidden" name="status" value="processing">
@@ -51,7 +51,7 @@
                                 <input type="hidden" name="status" value="completed">
                                 <button type="submit" class="btn btn-sm btn-success">Complete</button>
                             </form>
-                            <form action="{{ route('admin.withdrawals.update', $withdrawal) }}" method="POST">
+                            <form action="{{ route('withdrawals.update', $withdrawal) }}" method="POST">
                                 @csrf
                                 
                                 <input type="hidden" name="status" value="rejected">
