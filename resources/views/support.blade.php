@@ -26,7 +26,7 @@
               </li>
               <li class="mb-2">
                 <i class="fas fa-phone-alt text-primary me-2"></i>
-                <strong>Phone:</strong> 
+                <strong>Phone: +447446970806</strong> 
               </li>
               <li class="mb-2">
                 <i class="fas fa-map-marker-alt text-primary me-2"></i>
