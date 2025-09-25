@@ -61,7 +61,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     
     // Withdrawals Management
     Route::get('/withdrawals', [AdminController::class, 'withdrawals'])->name('withdrawals');
-    Route::post('/withdrawals/{withdrawal}', [AdminController::class, 'updateWithdrawalStatus'])->name('withdrawals.update');
+    Route::post('admin/withdrawals/{withdrawal}', [AdminController::class, 'updateWithdrawalStatus'])->name('withdrawals.update');
     
     // Investment Plans Management
     Route::get('/plans', [AdminController::class, 'investmentPlans'])->name('plans');
