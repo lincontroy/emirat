@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/cron/process-locked-plans', [InvestmentPlanController::class, 'processLockedPlans']);
 
 Route::middleware('auth')->group(function () {
-    Route::post('/withdrawals/{id}', [AdminController::class, 'updateWithdrawalStatus'])->name('withdrawals.update');
+    Route::post('/withdrawals/{withdrawal}', [AdminController::class, 'updateWithdrawalStatus'])->name('withdrawals.update');
     Route::post('/kyc/submit', [ProfileController::class, 'submitKYC'])->name('kyc.submit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/support', [ProfileController::class, 'support'])->name('profile.support');
