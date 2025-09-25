@@ -223,7 +223,7 @@ class AdminController extends Controller
         ->latest() // orders by created_at desc by default
         ->first();
 
-        // dd($transaction);
+        dd($transaction);
 
 
         // $withdrawal = Withdrawal::findOrFail($id); // Or however you get it
