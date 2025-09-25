@@ -211,7 +211,7 @@ class AdminController extends Controller
     public function updateWithdrawalStatus(Request $request, Transaction $withdrawal)
     {
 
-        dd($withdrawal->user_id);
+        dd($withdrawal);
 
         
         $request->validate([
