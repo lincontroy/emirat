@@ -219,7 +219,7 @@ class AdminController extends Controller
         ]);
 
 
-        $transaction = Withdrawal::where('id', $withdrawal->id)
+        $transaction = Withdrawal::where('id', $request->id)
         ->where('status', 'pending')
         ->latest() // orders by created_at desc by default
         ->first();
