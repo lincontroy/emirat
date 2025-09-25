@@ -211,12 +211,13 @@ class AdminController extends Controller
     public function updateWithdrawalStatus(Request $request, Transaction $withdrawal)
     {
 
-        // dd($withdrawal);
+        dd($withdrawal);
 
         
         $request->validate([
             'status' => 'required|in:pending,processing,completed,rejected',
         ]);
+
 
         $transaction = Withdrawal::where('user_id', $withdrawal->user_id)
         ->where('status', 'pending')
