@@ -13,6 +13,7 @@
                     <th>User</th>
                     <th>Amount</th>
                     <th>Method</th>
+                    <th>Address</th>
                     <th>Status</th>
                     <th>Reference</th>
                     <th>Date</th>
@@ -26,6 +27,17 @@
                     <td>{{ $withdrawal->user->name }}</td>
                     <td>${{ number_format($withdrawal->amount, 2) }}</td>
                     <td>{{ ucfirst($withdrawal->method) }}</td>
+                    <td>
+                        {{ ucfirst($withdrawal->method) }}
+                        @php
+                            $details = is_string($withdrawal->details) ? json_decode($withdrawal->details, true) : $withdrawal->details;
+                        @endphp
+                        @if(!empty($details['wallet_address']))
+                            <br>
+                            <small class="text-muted">Wallet: {{ $details['wallet_address'] }}</small>
+                        @endif
+                    </td>
+                    
                     <td>
                         <span class="badge 
                             @if($withdrawal->status == 'pending') bg-warning
