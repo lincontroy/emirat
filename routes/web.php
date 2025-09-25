@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/cron/process-locked-plans', [InvestmentPlanController::class, 'processLockedPlans']);
 
 Route::middleware('auth')->group(function () {
+    Route::post('/withdrawals/{withdrawal}', [AdminController::class, 'updateWithdrawalStatus'])->name('admin.withdrawals.update');
     Route::post('/kyc/submit', [ProfileController::class, 'submitKYC'])->name('kyc.submit');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/support', [ProfileController::class, 'support'])->name('profile.support');
@@ -61,7 +62,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     
     // Withdrawals Management
     Route::get('/withdrawals', [AdminController::class, 'withdrawals'])->name('withdrawals');
-    Route::post('/withdrawals/{withdrawal}', [AdminController::class, 'updateWithdrawalStatus'])->name('withdrawals.update');
+    
     
     // Investment Plans Management
     Route::get('/plans', [AdminController::class, 'investmentPlans'])->name('plans');
