@@ -211,7 +211,7 @@ class AdminController extends Controller
     public function updateWithdrawalStatus(Request $request, Transaction $withdrawal)
     {
 
-        dd($request->withdrawal);
+        // dd($request->withdrawal);
 
         
         $request->validate([
@@ -219,12 +219,12 @@ class AdminController extends Controller
         ]);
 
 
-        $transaction = Withdrawal::where('user_id', $withdrawal->user_id)
+        $transaction = Withdrawal::where('id', $withdrawal->id)
         ->where('status', 'pending')
         ->latest() // orders by created_at desc by default
         ->first();
 
-        dd($transaction);
+        // dd($transaction);
 
 
         // $withdrawal = Withdrawal::findOrFail($id); // Or however you get it
