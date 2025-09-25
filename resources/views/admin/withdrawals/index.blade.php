@@ -41,19 +41,19 @@
                         <div class="btn-group">
                             <form action="{{ route('admin.withdrawals.update', $withdrawal) }}" method="POST">
                                 @csrf
-                                @method('PATCH')
+                               
                                 <input type="hidden" name="status" value="processing">
                                 <button type="submit" class="btn btn-sm btn-info">Processing</button>
                             </form>
                             <form action="{{ route('admin.withdrawals.update', $withdrawal) }}" method="POST">
                                 @csrf
-                                @method('PATCH')
+                               
                                 <input type="hidden" name="status" value="completed">
                                 <button type="submit" class="btn btn-sm btn-success">Complete</button>
                             </form>
                             <form action="{{ route('admin.withdrawals.update', $withdrawal) }}" method="POST">
                                 @csrf
-                                @method('PATCH')
+                                
                                 <input type="hidden" name="status" value="rejected">
                                 <button type="submit" class="btn btn-sm btn-danger">Reject</button>
                             </form>
